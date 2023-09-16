@@ -16,7 +16,7 @@ def test_create_new_post():
     )
     token = resp.json()["auth_token"]
 
-    data = {"title": "Hello REST", "body": "via API"}
+    data = {"title": "Hi Students", "body": "via API"}
     resp = requests.post(
         url="http://127.0.0.1:5000/api/blog/create",
         json=data,
@@ -65,4 +65,4 @@ def test_update_post_with_logout():
 
 
 if __name__ == "__main__":
-    test_update_post_with_logout()
+    test_create_new_post()
