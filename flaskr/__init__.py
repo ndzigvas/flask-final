@@ -13,6 +13,8 @@ def create_app(test_config=None):
         SECRET_KEY="dev",
         DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
     )
+    if test_config is not None:
+        app.config.from_mapping(test_config)
 
     # ensure the instance folder exists
     os.makedirs(app.instance_path, exist_ok=True)
@@ -24,5 +26,9 @@ def create_app(test_config=None):
     app.register_blueprint(blog_blueprint)
     app.register_blueprint(blog.bp)
     app.add_url_rule("/", endpoint="index")
+
+    @app.route("/hello")
+    def hello():
+        return "Hello, World!"
 
     return app

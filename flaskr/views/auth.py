@@ -28,8 +28,7 @@ def register():
 
         if err := validate_auth_form(post_data):
             flash(err)
-
-        if err := User.from_post_data(post_data).commit():
+        elif err := User.from_post_data(post_data).commit():
             flash(err)
         else:
             print("redirecting")
@@ -49,7 +48,7 @@ def login():
         if err := validate_auth_form(post_data):
             flash(err)
 
-        if user := User.get_one(post_data):
+        elif user := User.get_one(post_data):
             session.clear()
             session["user_id"] = user.id
             return redirect(url_for("index"))
