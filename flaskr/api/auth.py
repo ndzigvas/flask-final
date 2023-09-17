@@ -41,9 +41,9 @@ def login():
             "auth_token": auth_token,
         }
         return make_response(jsonify(responseObject)), 200
-    else:
-        responseObject = {"status": "fail", "message": "Try again"}
-        return make_response(jsonify(responseObject)), 500
+
+    responseObject = {"status": "fail", "message": "Try again"}
+    return make_response(jsonify(responseObject)), 400
 
 
 @auth_blueprint.route("/logout", methods=["POST"])
