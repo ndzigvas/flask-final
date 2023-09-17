@@ -1,0 +1,1 @@
+pytest . -vv --cov=flaskr --cov-report html:cov_html
